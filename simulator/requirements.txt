@@ -2,3 +2,4 @@ kafka-python==2.3.0
 boto3==1.42.23
 python-dotenv==1.2.1
 faker==40.1.0
+json==2.0.9
