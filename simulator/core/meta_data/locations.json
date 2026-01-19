@@ -1,0 +1,67 @@
+[
+  {
+    "country": "Germany",
+    "state": "Berlin",
+    "city": "Berlin"
+  },
+  {
+    "country": "United States",
+    "state": "Illinois",
+    "city": "Chicago"
+  },
+  {
+    "country": "Canada",
+    "state": "Ontario",
+    "city": "Toronto"
+  },
+  {
+    "country": "United Kingdom",
+    "state": "London",
+    "city": "London"
+  },
+  {
+    "country": "France",
+    "state": "Paris",
+    "city": "Paris"
+  },
+  {
+    "country": "Italy",
+    "state": "Rome",
+    "city": "Rome"
+  },
+  {
+    "country": "Spain",
+    "state": "Madrid",
+    "city": "Madrid"
+  },
+  {
+    "country": "Portugal",
+    "state": "Lisbon",
+    "city": "Lisbon"
+  },
+  {
+    "country": "Netherlands",
+    "state": "Amsterdam",
+    "city": "Amsterdam"
+  },
+  {
+    "country": "Belgium",
+    "state": "Brussels",
+    "city": "Brussels"
+  },
+  {
+    "country": "Sweden",
+    "state": "Stockholm",
+    "city": "Stockholm"
+  },
+  {
+    "country": "Norway",
+    "state": "Oslo",
+    "city": "Oslo"
+  },
+  {
+    "country": "Uzbekistan",
+    "state": "Tashkent",
+    "city": "Tashkent"
+  }
+]

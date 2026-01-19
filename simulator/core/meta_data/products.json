@@ -1,0 +1,78 @@
+[
+  {
+    "category": "Electronics",
+    "products": [
+      { "name": "iPhone 17 Pro Max", "brand": "Apple", "price": 1699.99 },
+      { "name": "Samsung Galaxy S25", "brand": "Samsung", "price": 1499.99 },
+      { "name": "MacBook Pro 16", "brand": "Apple", "price": 2499.99 },
+      { "name": "Sony WH-1000XM5", "brand": "Sony", "price": 399.99 },
+      { "name": "iPad Air", "brand": "Apple", "price": 599.99 }
+    ]
+  },
+  {
+    "category": "Clothing",
+    "products": [
+      { "name": "Levi's 501 Jeans", "brand": "Levi's", "price": 89.99 },
+      { "name": "Nike Air Max", "brand": "Nike", "price": 159.99 },
+      { "name": "Adidas Hoodie", "brand": "Adidas", "price": 79.99 },
+      { "name": "Zara Jacket", "brand": "Zara", "price": 129.99 },
+      { "name": "H&M T-Shirt", "brand": "H&M", "price": 19.99 }
+    ]
+  },
+  {
+    "category": "Books",
+    "products": [
+      {
+        "name": "The Great Gatsby",
+        "brand": "Scribner",
+        "price": 10.99
+      },
+      { "name": "1984", "brand": "Secker & Warburg", "price": 12.99 },
+      {
+        "name": "To Kill a Mockingbird",
+        "brand": "J.B. Lippincott & Co.",
+        "price": 14.99
+      },
+      {
+        "name": "Pride and Prejudice",
+        "brand": "T. Egerton, Young & Albion",
+        "price": 16.99
+      },
+      {
+        "name": "The Catcher in the Rye",
+        "brand": "Little, Brown and Company",
+        "price": 18.99
+      }
+    ]
+  },
+  {
+    "category": "Home & Kitchen",
+    "products": [
+      {
+        "name": "Instant Pot Duo Nova",
+        "brand": "Instant Pot",
+        "price": 99.99
+      },
+      {
+        "name": "Cuisinart 14-Piece Cookware Set",
+        "brand": "Cuisinart",
+        "price": 199.99
+      },
+      {
+        "name": "KitchenAid Stand Mixer",
+        "brand": "KitchenAid",
+        "price": 299.99
+      },
+      {
+        "name": "Cuisinart 14-Piece Cookware Set",
+        "brand": "Cuisinart",
+        "price": 199.99
+      },
+      {
+        "name": "KitchenAid Stand Mixer",
+        "brand": "KitchenAid",
+        "price": 299.99
+      }
+    ]
+  }
+]

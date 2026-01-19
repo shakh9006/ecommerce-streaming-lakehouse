@@ -1,0 +1,126 @@
+[
+  {
+    "username": "Peter Parker",
+    "email": "peter.parker@example.com"
+  },
+  {
+    "username": "Mary Jane Watson",
+    "email": "mary.jane.watson@example.com"
+  },
+  {
+    "username": "Tony Stark",
+    "email": "tony.stark@example.com"
+  },
+  {
+    "username": "Bruce Wayne",
+    "email": "bruce.wayne@example.com"
+  },
+  {
+    "username": "Clark Kent",
+    "email": "clark.kent@example.com"
+  },
+  {
+    "username": "Diana Prince",
+    "email": "diana.prince@example.com"
+  },
+  {
+    "username": "Tom Taylor",
+    "email": "tom.taylor@example.com"
+  },
+  {
+    "username": "Cassandra Cain",
+    "email": "cassandra.cain@example.com"
+  },
+  {
+    "username": "Arthur Curry",
+    "email": "arthur.curry@example.com"
+  },
+  {
+    "username": "Oliver Queen",
+    "email": "oliver.queen@example.com"
+  },
+  {
+    "username": "Barry Allen",
+    "email": "barry.allen@example.com"
+  },
+  {
+    "username": "Hal Jordan",
+    "email": "hal.jordan@example.com"
+  },
+  {
+    "username": "David Zavimbe",
+    "email": "david.zavimbe@example.com"
+  },
+  {
+    "username": "Iain Gardner",
+    "email": "iain.gardner@example.com"
+  },
+  {
+    "username": "Zatanna Zatara",
+    "email": "zatanna.zatara@example.com"
+  },
+  {
+    "username": "Tina McGee",
+    "email": "tina.mcgee@example.com"
+  },
+  {
+    "username": "Mia Dearden",
+    "email": "mia.dearden@example.com"
+  },
+  {
+    "username": "Black Canary",
+    "email": "black.canary@example.com"
+  },
+  {
+    "username": "Roy Harper",
+    "email": "roy.harper@example.com"
+  },
+  {
+    "username": "Dinah Lance",
+    "email": "dinah.lance@example.com"
+  },
+  {
+    "username": "John Constantine",
+    "email": "john.constantine@example.com"
+  },
+  {
+    "username": "Mikaal Tomas",
+    "email": "mikaal.tomas@example.com"
+  },
+  {
+    "username": "Kory Anders",
+    "email": "kory.anders@example.com"
+  },
+  {
+    "username": "John Stewart",
+    "email": "john.stewart@example.com"
+  },
+  {
+    "username": "Victor Stone",
+    "email": "victor.stone@example.com"
+  },
+  {
+    "username": "Ray Palmer",
+    "email": "ray.palmer@example.com"
+  },
+  {
+    "username": "Milo Thunder",
+    "email": "milo.thunder@example.com"
+  },
+  {
+    "username": "Donna Troy",
+    "email": "donna.troy@example.com"
+  },
+  {
+    "username": "Barbara Gordon",
+    "email": "barbara.gordon@example.com"
+  },
+  {
+    "username": "Dick Grayson",
+    "email": "dick.grayson@example.com"
+  },
+  {
+    "username": "Jason Todd",
+    "email": "jason.todd@example.com"
+  }
+]
