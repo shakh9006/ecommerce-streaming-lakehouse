@@ -85,7 +85,8 @@ class DataFactory:
         return random.choice(self.products)
 
     def get_random_payment_method(self) -> str:
-        return random.choice(self.payment_methods)
+        payment_method = random.choice(self.payment_methods)
+        return payment_method['payment_method']
 
     def get_random_location(self) -> Dict:
         return random.choice(self.locations)
