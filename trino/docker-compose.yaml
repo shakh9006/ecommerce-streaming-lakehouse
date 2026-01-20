@@ -1,0 +1,31 @@
+services:
+  trino-coordinator:
+    image: trinodb/trino:latest
+    container_name: trino-coordinator
+    ports:
+      - 8080:8080
+    volumes:
+      - ./config/coordinator/config.properties:/etc/trino/config.properties
+      - ./config/catalog:/etc/trino/catalog
+    networks:
+      - ecommerce-analytics
+    env_file:
+      - .env
+
+  trino-worker-1:
+    image: trinodb/trino:latest
+    container_name: trino-worker-1
+    ports:
+      - 8081:8080
+    volumes:
+      - ./config/worker/config.properties:/etc/trino/config.properties
+      - ./config/catalog:/etc/trino/catalog
+    depends_on:
+      - trino-coordinator
+    networks:
+      - ecommerce-analytics
+
+networks:
+  ecommerce-analytics:
+    external: true
+    name: ecommerce-analytics
