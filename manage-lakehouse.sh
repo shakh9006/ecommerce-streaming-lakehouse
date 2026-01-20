@@ -41,8 +41,9 @@ start_services() {
     sleep 5  # Allow services to initialize
 
     # Step 3: Start the spark streaming services (Spark Streaming)
-    # echo "Starting spark streaming services (Spark Streaming)..."
-    # docker compose -f ./spark-streaming/docker-compose.yaml up -d --build
+    echo "Starting spark streaming services (Spark Streaming)..."
+    docker compose -f ./spark-streaming/docker-compose.yaml up -d --build
+    sleep 5  # Allow services to initialize
 
     # Step 4: Start the trino services (Trino)
     # echo "Starting trino services (Trino)..."
@@ -58,7 +59,7 @@ start_services() {
     echo "  - Kafdrop: http://localhost:9009"
     echo "  - Minio: http://localhost:9000"
     echo "  - Nessie: http://localhost:19120"
-    # echo "  - Spark Streaming: http://localhost:8088"
+    echo "  - Spark Streaming: http://localhost:8088"
     # echo "  - Trino: http://localhost:8080"
     echo ""
 }
@@ -78,8 +79,8 @@ stop_services() {
     echo "Stopping storage services..."
     docker compose -f ./storage/docker-compose.yaml down -v
     
-    # echo "Stopping spark streaming services..."
-    # docker compose -f ./spark-streaming/docker-compose.yaml down -v
+    echo "Stopping spark streaming services..."
+    docker compose -f ./spark-streaming/docker-compose.yaml down -v
 
     # echo "Stopping trino services..."
     # docker compose -f ./trino/docker-compose.yaml down -v
@@ -115,7 +116,7 @@ case "${1:-help}" in
         echo "  - Kafdrop: http://localhost:9009"
         echo "  - Minio: http://localhost:9000"
         echo "  - Nessie: http://localhost:19120"
-        # echo "  - Spark Streaming: http://localhost:8088"
+        echo "  - Spark Streaming: http://localhost:8088"
         # echo "  - Trino: http://localhost:8080"
         ;;
 esac
