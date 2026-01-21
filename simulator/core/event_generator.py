@@ -70,10 +70,12 @@ class EventGenerator:
         order = session.create_order()
 
         event = self._get_base_event("order_created", session)
+        payment_method = self.data_factory.get_random_payment_method()
         event['event_data'] = {
             **order,
             'order_status': 'pending_payment',
             'currency': 'USD',
+            'payment_method': payment_method,
         }
 
         return event
@@ -83,13 +85,13 @@ class EventGenerator:
             return None
 
         order = session.current_order
-        payment_method = self.data_factory.get_random_payment_method()
 
         event = self._get_base_event("payment_completed", session)
         event['event_data'] = {
             'transaction_id': str(uuid.uuid4()),
             'order_id': order['order_id'],
-            'payment_method': payment_method,
+            'payment_status': 'completed',
+            'message': 'Completed',
         }
 
         session.state = SessionState.COMPLETED
@@ -107,7 +109,7 @@ class EventGenerator:
         event['event_data'] = {
             'transaction_id': str(uuid.uuid4()),
             'order_id': order['order_id'],
-            'payment_method': payment_method,
+            'payment_status': 'failed',
             'failure_code': failure_reason['code'],
             'failure_message': failure_reason['message'],
         }

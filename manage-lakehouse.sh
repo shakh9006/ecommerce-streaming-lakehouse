@@ -7,8 +7,10 @@
 # - Kafdrop (Kafka UI)
 # - Minio (Object storage)
 # - Nessie (Version control for data lakes)
+# - Trino (SQL query engine)
+# - Airflow (Workflow orchestrator)
 #
-# Usage: ./manage-simulator.sh [start|stop]
+# Usage: ./manage-lakehouse.sh [start|stop]
 
 set -e  # Exit immediately if any command fails
 
@@ -50,6 +52,11 @@ start_services() {
     docker compose -f ./trino/docker-compose.yaml up -d --build
 
     sleep 5  # Allow services to initialize
+
+    # Step 5: Start the airflow services (Airflow)
+    echo "Starting airflow services (Airflow)..."
+    docker compose -f ./airflow/docker-compose.yaml up -d --build
+    sleep 5  # Allow services to initialize
     
     echo "All services started successfully."
     echo ""
@@ -61,6 +68,7 @@ start_services() {
     echo "  - Nessie: http://localhost:19120"
     echo "  - Spark Streaming: http://localhost:8088"
     echo "  - Trino: http://localhost:8080"
+    echo "  - Airflow: http://localhost:8080"
     echo ""
 }
 
@@ -85,6 +93,9 @@ stop_services() {
     echo "Stopping trino services..."
     docker compose -f ./trino/docker-compose.yaml down -v
 
+    echo "Stopping airflow services..."
+    docker compose -f ./airflow/docker-compose.yaml down -v
+
     echo "All services stopped and volumes cleaned up."
     echo ""
 }
@@ -103,7 +114,7 @@ case "${1:-help}" in
         echo "Usage: $0 [start|stop]"
         echo ""
         echo "Commands:"
-        echo "  start    Start all lakehouse services (Simulator, Kafka, Kafdrop, Spark Streaming, Storage, Trino)"
+        echo "  start    Start all lakehouse services (Simulator, Kafka, Kafdrop, Spark Streaming, Storage, Trino, Airflow)"
         echo "  stop     Stop all services and clean up volumes"
         echo ""
         echo "Examples:"
@@ -118,5 +129,6 @@ case "${1:-help}" in
         echo "  - Nessie: http://localhost:19120"
         echo "  - Spark Streaming: http://localhost:8088"
         echo "  - Trino: http://localhost:8080"
+        echo "  - Airflow: http://localhost:8085"
         ;;
 esac
