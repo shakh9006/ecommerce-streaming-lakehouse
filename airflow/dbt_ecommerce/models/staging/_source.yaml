@@ -1,0 +1,56 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw ecommerce events
+    database: iceberg
+    schema: raw
+    tables:
+      - name: events
+        description: Raw ecommerce events
+        columns:
+          - name: event_id
+            description: Event ID
+            tests:
+              - not_null
+              - unique
+          - name: event_type
+            description: Event Type
+            tests:
+              - not_null
+          - name: event_timestamp
+            description: Event Timestamp
+            tests:
+              - not_null
+          - name: event_date
+            description: Event Date
+            tests:
+              - not_null
+          - name: user_id
+            description: User ID
+            tests:
+              - not_null
+          - name: username
+            description: Username
+            tests:
+              - not_null
+          - name: session_id
+            description: Session ID
+            tests:
+              - not_null
+          - name: device
+            description: Device
+            tests:
+              - not_null
+          - name: location
+            description: Location
+            tests:
+              - not_null
+          - name: event_data
+            description: JSON string with event-specific data
+            tests:
+              - not_null
+          - name: ingestion_timestamp
+            description: Ingestion Timestamp
+            tests:
+              - not_null

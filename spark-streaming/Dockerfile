@@ -34,9 +34,9 @@ RUN mkdir -p /opt/spark/events && mkdir -p /opt/spark/jars/iceberg \
 
 RUN mkdir -p /opt/checkpoints && chown -R spark:spark /opt/checkpoints
 
-ENV SPARK_DRIVER_MEMORY=2g
-ENV SPARK_EXECUTOR_MEMORY=2g
-ENV SPARK_DRIVER_OPTS="-Xms512m -Xmx2g -XX:+UseG1GC"
+ENV SPARK_DRIVER_MEMORY=4g
+ENV SPARK_EXECUTOR_MEMORY=4g
+ENV SPARK_DRIVER_OPTS="-Xms512m -Xmx4g -XX:+UseG1GC -XX:MaxGCPauseMillis=200"
 
 USER spark
 

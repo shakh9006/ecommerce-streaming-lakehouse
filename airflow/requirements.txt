@@ -5,3 +5,4 @@ minio==7.2.18
 apache-airflow-providers-postgres==6.4.0
 dbt-trino==1.9.3
 dbt-core==1.10.15
+redis<5.0.0

@@ -97,6 +97,7 @@ parsed_df = (
         col("data.location"),
         to_json(col("data.event_data")).alias("event_data"),
         current_timestamp().alias("ingestion_timestamp")
+
     )
 )
 
@@ -125,9 +126,10 @@ spark.sql("""
     TBLPROPERTIES (
         'format-version'='2',
         'write.metadata.delete-after-commit.enabled'='true',
-        'write.metadata.previous-versions-max'='5',
-        'history.expire.max-snapshot-age-ms'='3600000',
-        'history.expire.min-snapshots-to-keep'='5'
+        'write.metadata.previous-versions-max'='3',
+        'history.expire.max-snapshot-age-ms'='1800000',
+        'history.expire.min-snapshots-to-keep'='3',
+        'write.metadata.metrics.default'='4'
     )
 """)
 

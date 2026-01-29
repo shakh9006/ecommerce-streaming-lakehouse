@@ -9,7 +9,7 @@
 # - Nessie (Version control for data lakes)
 # - Trino (SQL query engine)
 # - Airflow (Workflow orchestrator)
-#
+# - Metabase (Data visualization)
 # Usage: ./manage-lakehouse.sh [start|stop]
 
 set -e  # Exit immediately if any command fails
@@ -57,6 +57,11 @@ start_services() {
     echo "Starting airflow services (Airflow)..."
     docker compose -f ./airflow/docker-compose.yaml up -d --build
     sleep 5  # Allow services to initialize
+
+    # Step 6: Start the metabase services (Metabase)
+    echo "Starting metabase services (Metabase)..."
+    docker compose -f ./metabase/docker-compose.yaml up -d --build
+    sleep 5  # Allow services to initialize
     
     echo "All services started successfully."
     echo ""
@@ -69,17 +74,18 @@ start_services() {
     echo "  - Spark Streaming: http://localhost:8088"
     echo "  - Trino: http://localhost:8080"
     echo "  - Airflow: http://localhost:8080"
+    echo "  - Metabase: http://localhost:3000"
     echo ""
 }
 
 # Function to stop all lakehouse services and clean up resources
-stop_services() {
-    echo "Stopping Lakehouse and Simulator services..."
+stop_and_clean_up_services() {
+    echo "Stopping and cleaning up Lakehouse and Simulator services..."
     
     # Change to script directory
     cd "$SCRIPT_DIR"
     
-    # Stop services in reverse order (Simulator -> Kafka -> Kafdrop -> Spark Streaming -> Storage)
+    # Stop services in reverse order (Simulator -> Kafka -> Kafdrop -> Spark Streaming -> Storage -> Airflow -> Metabase)
     # The -v flag removes associated volumes to ensure clean shutdown
     echo "Stopping simulator and Kafka services..."
     docker compose -f ./simulator/docker-compose.yaml down -v
@@ -96,7 +102,40 @@ stop_services() {
     echo "Stopping airflow services..."
     docker compose -f ./airflow/docker-compose.yaml down -v
 
+    echo "Stopping metabase services..."
+    docker compose -f ./metabase/docker-compose.yaml down -v
+
     echo "All services stopped and volumes cleaned up."
+    echo ""
+}
+
+# Function to stop all lakehouse services and clean up resources
+stop_services() {
+    echo "Stopping Lakehouse and Simulator services..."
+    
+    # Change to script directory
+    cd "$SCRIPT_DIR"
+    
+    # Stop services in reverse order (Simulator -> Kafka -> Kafdrop -> Spark Streaming -> Storage -> Airflow -> Metabase)
+    echo "Stopping simulator and Kafka services..."
+    docker compose -f ./simulator/docker-compose.yaml down
+
+    echo "Stopping storage services..."
+    docker compose -f ./storage/docker-compose.yaml down
+    
+    echo "Stopping spark streaming services..."
+    docker compose -f ./spark-streaming/docker-compose.yaml down
+
+    echo "Stopping trino services..."
+    docker compose -f ./trino/docker-compose.yaml down
+
+    echo "Stopping airflow services..."
+    docker compose -f ./airflow/docker-compose.yaml down
+
+    echo "Stopping metabase services..."
+    docker compose -f ./metabase/docker-compose.yaml down
+
+    echo "All services stopped."
     echo ""
 }
 
@@ -108,18 +147,23 @@ case "${1:-help}" in
     "stop")
         stop_services
         ;;
+    "stop-and-clean-up")
+        stop_and_clean_up_services
+        ;;
     *)
         echo "Lakehouse and Simulator Management Script"
         echo ""
-        echo "Usage: $0 [start|stop]"
+        echo "Usage: $0 [start|stop|stop-and-clean-up]"
         echo ""
         echo "Commands:"
-        echo "  start    Start all lakehouse services (Simulator, Kafka, Kafdrop, Spark Streaming, Storage, Trino, Airflow)"
-        echo "  stop     Stop all services and clean up volumes"
+        echo "  start    Start all lakehouse services (Simulator, Kafka, Kafdrop, Spark Streaming, Storage, Trino, Airflow, Metabase)"
+        echo "  stop     Stop all services"
+        echo "  stop-and-clean-up     Stop all services and clean up volumes"
         echo ""
         echo "Examples:"
         echo "  $0 start    # Start the complete lakehouse stack"
-        echo "  $0 stop     # Stop all services and clean up"
+        echo "  $0 stop     # Stop all services"
+        echo "  $0 stop-and-clean-up     # Stop all services and clean up volumes"
         echo ""
         echo "After starting, you can access:"
         echo "  - Simulator: http://localhost:8000"
@@ -130,5 +174,6 @@ case "${1:-help}" in
         echo "  - Spark Streaming: http://localhost:8088"
         echo "  - Trino: http://localhost:8080"
         echo "  - Airflow: http://localhost:8085"
+        echo "  - Metabase: http://localhost:3000"
         ;;
 esac

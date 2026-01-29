@@ -8,8 +8,6 @@ version: '1.0.0'
 profile: 'dbt_ecommerce'
 
 # These configurations specify where dbt should look for different types of files.
-# The `model-paths` config, for example, states that models in this project can be
-# found in the "models/" directory. You probably won't need to change these!
 model-paths: ['models']
 analysis-paths: ['analyses']
 test-paths: ['tests']
@@ -17,27 +15,24 @@ seed-paths: ['seeds']
 macro-paths: ['macros']
 snapshot-paths: ['snapshots']
 
-clean-targets: # directories to be removed by `dbt clean`
+clean-targets:
   - 'target'
   - 'dbt_packages'
 
 # Configuring models
-# Full documentation: https://docs.getdbt.com/docs/configuring-models
-
-# In this example config, we tell dbt to build all models in the example/
-# directory as views. These settings can be overridden in the individual model
-# files using the `{{ config(...) }}` macro.
 models:
   dbt_ecommerce:
     staging:
       +materialized: incremental
-      +on_schema_change: sync_all_columns
-      +schema: ods
+      +schema: staging
+      +incremental_strategy: append
 
     marts:
-      +materialized: table
-      +schema: silver
+      core:
+        +materialized: incremental
+        +schema: core
+        +incremental_strategy: append
 
-    metrics:
-      +materialized: table
-      +schema: gold
+      metrics:
+        +materialized: table
+        +schema: metrics
